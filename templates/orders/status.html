@@ -78,7 +78,7 @@
             <td>{{ item.product.name }}</td>
             <td>{{ item.quantity }}</td>
             <td>₹{{ item.price }}</td>
-            <td>₹{{ item.price|floatformat:2|add:""|default_if_none:"" }}</td>
+            <td>₹{{ item.total_price }}</td>
             <td>{{ order.created_at }}</td>
             <td class="status">{{ order.status }}</td>
         </tr>

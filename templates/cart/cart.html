@@ -146,7 +146,7 @@
 {% else %}
     <p class="empty">Your cart is empty.</p>
     <div class="actions" style="text-align:center;">
-        <a class="btn btn-shop" href="/">Continue Shopping</a>
+        <a class="btn btn-shop" href="{% url 'product_list' %}">Continue Shopping</a>
     </div>
 {% endif %}
 

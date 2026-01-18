@@ -20,6 +20,7 @@ def checkout(request):
             status="Pending"
         )
 
+        order.save()
         for item in items:
             OrderItem.objects.create(
                 order=order,
