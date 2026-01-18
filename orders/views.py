@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from cart.models import Cart
 from .models import Order, OrderItem
@@ -17,7 +17,7 @@ def checkout(request):
         order = Order.objects.create(
             user=request.user,
             total_amount=total,
-            status="Paid"
+            status="Pending"
         )
 
         for item in items:
@@ -32,41 +32,19 @@ def checkout(request):
             item.product.stock -= item.quantity
             item.product.save()
 
-        items.delete()  # clear cart
+        items.delete()
 
-        return redirect('order_success', order_id=order.id)
+        return redirect('gateway', order_id=order.id)
 
     return render(request, 'orders/checkout.html', {'items': items, 'total': total})
 
-
-@login_required
-def order_success(request, order_id):
-    order = Order.objects.get(id=order_id, user=request.user)
-    return render(request, 'orders/success.html', {'order': order})
 
 @login_required
 def order_status(request):
     orders = Order.objects.filter(user=request.user).prefetch_related('items__product').order_by('-created_at')
     return render(request, 'orders/status.html', {'orders': orders})
 
-def payment_method(request):
-    # Just show payment options
-    if request.method == "POST":
-        method = request.POST.get("payment_method")
-
-        if method == "upi":
-            return redirect("upi_payment")
-        else:
-            # For now, directly go to success / checkout
-            return redirect("checkout")
-
-    return render(request, "accounts/payment_method.html")
-
-
-def upi_payment(request):
-    # Just show UPI page
-    if request.method == "POST":
-        # After entering UPI ID → go to success / checkout
-        return redirect("checkout")
-
-    return render(request, "upi_payment.html")
+@login_required
+def order_success(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'orders/success.html', {'order': order})

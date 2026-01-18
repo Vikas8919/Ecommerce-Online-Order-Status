@@ -69,9 +69,8 @@ body {
 <div class="payment-box">
     <h2>Select Payment Method</h2>
 
-    <form method="POST">
+    <form method="post" action="{% url 'upi' order.id %}">
         {% csrf_token %}
-
         <label class="method">
             <input type="radio" name="payment_method" value="upi" required>
             UPI Payment
@@ -89,6 +88,7 @@ body {
 
         <button class="pay-btn" type="submit">Continue</button>
     </form>
+
 </div>
 
 </body>

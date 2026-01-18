@@ -83,23 +83,23 @@
 
 <div class="container">
 
-{% for item in items %}
-    <div class="item-row">
-        <span>{{ item.product.name }} (x{{ item.quantity }})</span>
-        <span>₹{{ item.product.price }}</span>
+    {% for item in items %}
+        <div class="item-row">
+            <span>{{ item.product.name }} (x{{ item.quantity }})</span>
+            <span>₹{{ item.product.price }}</span>
+        </div>
+    {% endfor %}
+
+    <p class="total">Total: ₹{{ total }}</p>
+
+    <div class="actions">
+        <form method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button class="btn btn-place" type="submit">Place Order</button>
+        </form>
+
+        <a class="btn btn-back" href="/cart/">Back to cart</a>
     </div>
-{% endfor %}
-
-<p class="total">Total: ₹{{ total }}</p>
-
-<div class="actions">
-    <form method="POST" style="display:inline;">
-        {% csrf_token %}
-        <button class="btn btn-place" type="submit">Place Order</button>
-    </form>
-
-    <a class="btn btn-back" href="/cart/">Back to cart</a>
-</div>
 
 </div>
 

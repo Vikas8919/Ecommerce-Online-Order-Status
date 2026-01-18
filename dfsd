@@ -1,0 +1,29 @@
+[33mcommit 78d4b18fb4c680703c570c8b5ecdbaa0b40e866c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: vikas2465 <vikas.lucky734@gmail.com>
+Date:   Sun Jan 18 17:03:32 2026 +0530
+
+    Added User Profile Component
+
+[33mcommit 8625b4a06f9cbe940907c6aff2f60777f8a37f75[m
+Author: vikas2465 <vikas.lucky734@gmail.com>
+Date:   Sun Jan 18 16:54:24 2026 +0530
+
+    Added Order Status Component
+
+[33mcommit 51d28249f890274b4644ccd3b15f3704e5f3378f[m
+Author: vikas2465 <vikas.lucky734@gmail.com>
+Date:   Sun Jan 18 16:26:11 2026 +0530
+
+    Added Cart Component
+
+[33mcommit e0a3cdda03b807c3ba9498d6624a9cb28eeb8d6f[m
+Author: vikas2465 <vikas.lucky734@gmail.com>
+Date:   Sun Jan 18 15:17:48 2026 +0530
+
+    Products Component Creation
+
+[33mcommit 403489f9a65eaae5cc702e02894f5fa2c8b4734a[m
+Author: vikas2465 <vikas.lucky734@gmail.com>
+Date:   Sun Jan 18 13:31:52 2026 +0530
+
+    User Registraion and Login Component Created
