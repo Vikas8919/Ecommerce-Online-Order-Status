@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'user',
     'products',
+    'cart',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.admin',
@@ -133,3 +134,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'vikas.lucky734@gmail.com'
 EMAIL_HOST_PASSWORD = 'humovphazjuhawio'
 DEFAULT_FROM_EMAIL = 'Q2U Online Store <vikas.lucky734@gmail.com>'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
