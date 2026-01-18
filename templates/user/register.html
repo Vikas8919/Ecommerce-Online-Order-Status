@@ -1,0 +1,208 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Q2U Online Store - Sign Up</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #1f2937, #020617);
+    min-height: 100vh;
+    display: flex;
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 900px) {
+    .main {
+        flex-direction: row;
+    }
+}
+
+.left-panel {
+    flex: 1;
+    color: white;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top left, #334155, #020617);
+}
+
+.left-content {
+    max-width: 520px;
+    animation: slideLeft 0.9s ease;
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.left-content h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #f59e0b;
+    letter-spacing: 1px;
+}
+
+.left-content h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+.left-content p {
+    font-size: 18px;
+    color: #cbd5f5;
+    line-height: 1.7;
+}
+
+.right-panel {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 32px 32px 0 0;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 900px) {
+    .right-panel {
+        border-radius: 32px 0 0 32px;
+    }
+}
+
+.register-box {
+    width: 100%;
+    max-width: 460px;
+    background: #f8fafc;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    transition: 0.35s ease;
+    animation: slideUp 0.9s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.register-box h3 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 6px;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.register-box p {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.register-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #22c55e, #4ade80);
+    color: #064e3b;
+    border: none;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+    box-shadow: 0 12px 25px rgba(34,197,94,0.35);
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 35px rgba(34,197,94,0.45);
+}
+
+.message {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease;
+}
+
+.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="main">
+
+    <div class="left-panel">
+        <div class="left-content">
+            <h1>Q2U Online Store</h1>
+            <h2>Create your account</h2>
+            <p>Join us to manage orders, track purchases, and shop securely.</p>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="register-box">
+
+            <h3>Sign Up</h3>
+            <p>Create an account to get started</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <button type="submit" class="register-btn">SIGN UP</button>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </form>
+
+            <p style="text-align:center; margin-top:16px;">
+                <a href="{% url 'login' %}" style="color:#22c55e; font-weight:600;">
+                    Already have an account? Login
+                </a>
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
