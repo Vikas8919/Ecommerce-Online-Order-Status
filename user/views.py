@@ -9,8 +9,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 
-def index(request):
-    return render(request, "user/index.html", {'title': 'index'})
+# def index(request):
+#     return render(request, "user/index.html", {'title': 'index'})
 
 def register(request):
     if request.method == 'POST':
@@ -26,7 +26,6 @@ def register(request):
             msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
-            ##################################################################
             messages.success(request, f'Your account has been created ! You are now able to log in')
             return redirect('login')
     else:
@@ -36,16 +35,18 @@ def register(request):
 def Login(request):
     if request.method == 'POST':
 
-        # AuthenticationForm_can_also_be_used__
-
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
             form = login(request, user)
             messages.success(request, f' welcome {username} !!')
-            return redirect('product_list')
+            return redirect('intro')
         else:
             messages.info(request, f'account done not exit plz sign in')
     form = AuthenticationForm()
     return render(request, "user/login.html", {'form': form, 'title': 'log in'})
+
+@login_required
+def intro_view(request):
+    return render(request, 'intro.html')

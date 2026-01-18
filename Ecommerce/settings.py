@@ -141,3 +141,9 @@ DEFAULT_FROM_EMAIL = 'Q2U Online Store <vikas.lucky734@gmail.com>'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
