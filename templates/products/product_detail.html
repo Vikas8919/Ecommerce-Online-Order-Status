@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 75vh;
+    }
+
+    .product-card {
+        background: white;
+        width: 900px;
+        display: flex;
+        gap: 40px;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .product-image {
+        flex: 1;
+        text-align: center;
+    }
+
+    .product-image img {
+        width: 320px;
+        height: 320px;
+        object-fit: contain;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 10px;
+        background: #fafafa;
+    }
+
+    .product-info {
+        flex: 1;
+    }
+
+    .product-info h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #111827;
+    }
+
+    .desc {
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .price {
+        font-size: 26px;
+        color: #16a34a;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .stock {
+        color: #2563eb;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .cart-form {
+        margin-top: 20px;
+    }
+
+    .cart-form label {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .cart-form input {
+        width: 90px;
+        padding: 8px;
+        margin: 8px 0 18px 0;
+        font-size: 14px;
+        border-radius: 6px;
+        border: 1px solid #d1d5db;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .btn-cart {
+        background: #2563eb;
+        color: white;
+    }
+
+    .btn-cart:hover {
+        background: #1d4ed8;
+    }
+
+    .btn-back {
+        background: #e5e7eb;
+        color: #111827;
+        text-decoration: none;
+        margin-left: 12px;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+    .btn-back:hover {
+        background: #d1d5db;
+    }
+</style>
+
+<div class="container">
+    <div class="product-card">
+
+        <div class="product-image">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+        </div>
+
+        <div class="product-info">
+            <h1>{{ product.name }}</h1>
+
+            <p class="desc">{{ product.description }}</p>
+            <p class="price">₹{{ product.price }}</p>
+<!--            <p class="stock">Available stock: {{ product.stock }}</p>-->
+
+            <form class="cart-form" method="POST" action="{% url 'add_to_cart' product.id %}" onsubmit="return checkStock()">
+                {% csrf_token %}
+
+                <label>Quantity</label><br>
+                <input type="number" id="qty" name="quantity" min="1" value="1" required>
+
+                <br>
+                <button class="btn btn-cart" type="submit">Add to Cart</button>
+                <a class="btn-back" href="{% url 'product_list' %}">Back to products</a>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function checkStock() {
+    let qty = document.getElementById("qty").value;
+    let stock = {{ product.stock }};
+
+    if (qty > stock) {
+        alert("Only " + stock + " items are available in stock!");
+        return false;
+    }
+    return true;
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #111827;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #111827;
+    }
+
+    .price {
+        color: #16a34a;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .card a {
+        display: inline-block;
+        padding: 8px 14px;
+        background: #2563eb;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .card a:hover {
+        background: #1d4ed8;
+    }
+
+    .empty {
+        text-align: center;
+        font-size: 18px;
+        color: #555;
+    }
+</style>
+
+<h1>All Products</h1>
+
+<div class="container">
+{% for product in products %}
+    <div class="card">
+        <h2>{{ product.name }}</h2>
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+
+        <p class="price">₹{{ product.price }}</p>
+
+        <a href="{% url 'product_detail' product.id %}">View Details</a>
+    </div>
+{% empty %}
+    <p class="empty">No products available</p>
+{% endfor %}
+</div>
+
+{% endblock %}

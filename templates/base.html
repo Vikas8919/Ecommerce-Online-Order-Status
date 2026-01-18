@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q2U Online Store</title>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f6f8;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* HEADER */
+    .header {
+        background: linear-gradient(90deg, #232f3e, #1a2533);
+        color: white;
+        padding: 16px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;   /* pushes profile to the end */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .header a {
+        color: #d1d5db;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .header a:hover {
+        color: #ff9900;
+    }
+
+
+    .logo {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: #ff9900;   /* Amazon orange */
+    }
+
+    /* MAIN LAYOUT */
+    .main-layout {
+        flex: 1;
+        display: flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+        width: 90px;
+        background: #232f3e;
+        padding-top: 25px;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+    }
+
+    .sidebar a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 0;
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 18px;
+        border-left: 4px solid transparent;
+        transition: all 0.25s ease;
+    }
+
+    .sidebar a:hover {
+        background: #1a2533;
+        color: #ff9900;
+        border-left: 4px solid #ff9900;
+    }
+
+    /* PAGE CONTENT */
+    .page-container {
+        flex: 1;
+        padding: 25px 40px;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #232f3e;
+        color: #d1d5db;
+        text-align: center;
+        padding: 12px;
+        font-size: 13px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">🛒 Q2U <span>Online Store</span></div>
+
+    <a href="/user_profile/" title="My Profile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+             class="bi bi-person-square" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+        </svg>
+    </a>
+</div>
+
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="{% url 'product_list' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/></svg>
+
+        </a>
+        <a href="/cart/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+        </a>
+        <a href="/orderstatus/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-dash" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"/>
+                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+            </svg>
+        </a>
+
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>

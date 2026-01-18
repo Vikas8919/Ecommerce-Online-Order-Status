@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q2U Online Store</title>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f6f8;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* HEADER */
+    .header {
+        background: linear-gradient(90deg, #232f3e, #1a2533);
+        color: white;
+        padding: 16px 40px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: #ff9900;   /* Amazon orange */
+    }
+
+    /* MAIN LAYOUT */
+    .main-layout {
+        flex: 1;
+        display: flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+        width: 90px;
+        background: #232f3e;
+        padding-top: 25px;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+    }
+
+    .sidebar a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 0;
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 18px;
+        border-left: 4px solid transparent;
+        transition: all 0.25s ease;
+    }
+
+    .sidebar a:hover {
+        background: #1a2533;
+        color: #ff9900;
+        border-left: 4px solid #ff9900;
+    }
+
+    /* PAGE CONTENT */
+    .page-container {
+        flex: 1;
+        padding: 25px 40px;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">🛒 Q2U <span>Online Store</span></div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+    <!-- SIDEBAR -->
+    <!-- PAGE CONTENT -->
+    <div class="page-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>
