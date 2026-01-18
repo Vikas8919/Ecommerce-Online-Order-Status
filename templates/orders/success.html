@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .success-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+    }
+
+    .success-card {
+        background: #ffffff;
+        padding: 35px 45px;
+        border-radius: 14px;
+        width: 420px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .success-card h1 {
+        color: #22c55e;
+        margin-bottom: 12px;
+    }
+
+    .success-card p {
+        font-size: 15px;
+        color: #374151;
+        margin: 6px 0;
+    }
+
+    .order-info {
+        margin-top: 20px;
+        background: #f9fafc;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .order-info p {
+        margin: 6px 0;
+        font-size: 14px;
+    }
+
+    .success-actions {
+        margin-top: 25px;
+    }
+
+    .success-actions a {
+        display: inline-block;
+        margin: 8px;
+        padding: 10px 22px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .success-actions a:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+    }
+</style>
+
+<div class="success-wrapper">
+    <div class="success-card">
+        <h1>Order Placed Successfully 🎉</h1>
+        <p>Thank you for shopping with Q2U Online Store</p>
+
+        <div class="order-info">
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Total Amount:</strong> ₹{{ order.total_amount }}</p>
+            <p><strong>Status:</strong> {{ order.status }}</p>
+        </div>
+
+        <div class="success-actions">
+            <a href="/">Continue Shopping</a>
+            <!-- remove this if orderstatus page not created -->
+            <a href="/orderstatus">Order Status</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

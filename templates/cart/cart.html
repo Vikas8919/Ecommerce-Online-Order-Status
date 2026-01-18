@@ -140,7 +140,7 @@
 
     <div class="actions">
         <a class="btn btn-checkout" href="{% url 'checkout' %}">Proceed to Checkout</a>
-        <a class="btn btn-shop" href="home/">Continue Shopping</a>
+        <a class="btn btn-shop" href="{% url 'product_list' %}">Continue Shopping</a>
     </div>
 
 {% else %}
