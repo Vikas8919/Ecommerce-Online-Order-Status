@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<center style="margin-top:60px;">
+<h2 style="color:red;">Upload Failed ❌</h2>
+<p>{{ error }}</p>
+<a href="{% url 'excel_upload' %}">Try Again</a>
+</center>
+{% endblock %}

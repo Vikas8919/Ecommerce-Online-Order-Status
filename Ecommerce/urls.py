@@ -28,6 +28,7 @@ urlpatterns = [
     path('',include('orders.urls')),
     path('',include('accounts.urls')),
     path('',include('payment.urls')),
+    path('',include('superadmin.urls')),
 
 ]
 

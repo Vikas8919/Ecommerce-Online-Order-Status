@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'orders',
     'accounts',
     'payment',
+    'superadmin',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.admin',
