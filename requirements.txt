@@ -1,0 +1,22 @@
+Django==6.0.1
+
+# Database
+mysql-connector-python==9.2.0
+psycopg2-binary==2.9.11
+
+# Images
+pillow==11.1.0
+
+# Forms
+django-crispy-forms==2.5
+crispy-bootstrap5==2025.6
+
+# Excel upload
+openpyxl==3.1.5
+pandas==2.2.3
+
+# Utilities
+requests==2.32.3
+python-dateutil==2.9.0.post0
+
+django-embed-video

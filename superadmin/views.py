@@ -1,8 +1,6 @@
 import pandas as pd
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import transaction
-from sympy.integrals.meijerint_doc import category
-from torch.cpu import is_available
 
 from products.models import Product, Category
 
